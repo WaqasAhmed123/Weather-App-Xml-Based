@@ -3,9 +3,11 @@ package com.example.weather_xml
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
+    protected abstract val layoutId: Int
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(layoutId)
     }
 }

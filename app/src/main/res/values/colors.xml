@@ -10,5 +10,7 @@
 <!--    added-->
     <color name="buttonColor">#DDB130</color>
     <color name="colorPrimary">#3E2D8F</color>
+    <color name="colorPrimaryDark">#3E2D8F</color>
+    <color name="colorAccent">#9D52AC</color>
 
 </resources>

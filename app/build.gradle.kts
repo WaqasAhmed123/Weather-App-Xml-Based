@@ -37,7 +37,9 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose = true
+        //compose = true
+        viewBinding=true
+        dataBinding=true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -69,4 +71,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //resp scrn size
+    implementation ("com.intuit.ssp:ssp-android:1.0.6")
+    implementation ("com.intuit.sdp:sdp-android:1.0.6")
 }
