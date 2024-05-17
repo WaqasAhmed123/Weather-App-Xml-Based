@@ -4,20 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    tools:context=".Presentation.SplashActivity">
+    android:background="@drawable/drawable_gradient_background"
+    tools:context=".Presentation.splash.SplashActivity">
 
     <ImageView
+        android:id="@+id/iv_weather"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/weather_icon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintWidth_percent="1">
-    </ImageView>
+        app:layout_constraintWidth_percent="1" />
 
+    <TextView
+        android:id="@+id/tv_title_weather"
+        style="@style/titleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:text="@string/WEATHER"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_weather">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_title_forecasts"
+        style="@style/titleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:text="@string/FORECASTS"
+        android:textColor="@color/buttonColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_weather">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/btn_get_start"
+        style="@style/titleMedium"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:background="@drawable/drawable_get_start_button"
+        android:text="@string/GET_START"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_forecasts">
+
+    </TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

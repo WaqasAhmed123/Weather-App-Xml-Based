@@ -3,4 +3,6 @@
     <!--    splash scrn-->
 
     <string name="GET_START">Get Start</string>
+    <string name="WEATHER">Weather</string>
+    <string name="FORECASTS">ForeCasts</string>
 </resources>

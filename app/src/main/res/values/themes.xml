@@ -6,8 +6,16 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-
     </style>
 
+    <style name="titleLarge">
+        <item name="android:textSize">@dimen/_50ssp</item>
+        <item name="fontFamily">@font/poppins_black</item>
+    </style>
+
+    <style name="titleMedium">
+        <item name="android:textSize">@dimen/_24ssp</item>
+        <item name="fontFamily">@font/poppins_black</item>
+    </style>
 
 </resources>
