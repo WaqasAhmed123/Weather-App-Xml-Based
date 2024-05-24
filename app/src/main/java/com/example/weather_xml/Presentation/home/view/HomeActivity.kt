@@ -1,4 +1,4 @@
-package com.example.weather_xml.Presentation.home
+package com.example.weather_xml.Presentation.home.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

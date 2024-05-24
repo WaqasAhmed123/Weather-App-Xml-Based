@@ -1,10 +1,9 @@
 package com.example.weather_xml.Presentation.splash
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import com.example.weather_xml.BaseActivity
-import com.example.weather_xml.R
+import com.example.weather_xml.Presentation.home.view.HomeActivity
 import com.example.weather_xml.databinding.ActivitySplashBinding
 
 class SplashActivity() : AppCompatActivity() {
@@ -20,6 +19,8 @@ class SplashActivity() : AppCompatActivity() {
 
 
         layoutBinding.btnGetStart.setOnClickListener {
+            val intent=Intent(this@SplashActivity, HomeActivity::class.java)
+            startActivity(intent)
 
         }
     }

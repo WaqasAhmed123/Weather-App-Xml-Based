@@ -10,7 +10,36 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Presentation.home.HomeActivity">
+        android:background="@drawable/drawable_gradient_background"
+        tools:context=".Presentation.home.view.HomeActivity">
+
+
+        <ImageView
+            android:id="@+id/iv_weather"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/weather_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="1" />
+
+        <TextView
+            android:id="@+id/tv_current_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="19°"
+            style="@style/titleLarge"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/iv_weather"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+        </TextView>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
