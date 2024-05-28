@@ -5,4 +5,9 @@
     <string name="GET_START">Get Start</string>
     <string name="WEATHER">Weather</string>
     <string name="FORECASTS">ForeCasts</string>
+    <string name="PRECEPITATIONS">Precipitations</string>
+    <string name="MAX">Max</string>
+    <string name="MIN">Min</string>
+    <string name="TODAY">Today</string>
+    <string name="FEELS_LIKE">Feels Like</string>
 </resources>
