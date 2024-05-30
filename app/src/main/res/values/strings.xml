@@ -11,4 +11,5 @@
     <string name="TODAY">Today</string>
     <string name="FEELS_LIKE">Feels Like</string>
     <string name="SEE_MORE">See More …</string>
+    <string name="FIVE_DAYS_FORECASTS">5-Days Forecasts</string>
 </resources>
