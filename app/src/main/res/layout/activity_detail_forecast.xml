@@ -1,46 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/drawable_gradient_background"
-    tools:context=".Presentation.detailForecast.view.DetailForecastActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="City"
-        style="@style/titleMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </TextView>
+    <data>
 
-    <TextView
-        android:id="@+id/tv_five_days_forecast"
-        style="@style/titleMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_16sdp"
-        android:text="@string/FIVE_DAYS_FORECASTS"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_location">
+    </data>
 
-    </TextView>
-
-    <include
-        android:id="@+id/layout_daily_forecast"
-        layout="@layout/layout_daily_forecast"
-        android:layout_marginVertical="@dimen/_16sdp"
-        android:layout_marginHorizontal="@dimen/_16sdp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_five_days_forecast"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/drawable_gradient_background"
+        tools:context=".presentation.detailForecast.view.DetailForecastActivity">
 
-        />
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City"
+            style="@style/titleMedium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/tv_five_days_forecast"
+            style="@style/titleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:text="@string/FIVE_DAYS_FORECASTS"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location">
+
+        </TextView>
+
+        <include
+            android:id="@+id/layout_daily_forecast"
+            layout="@layout/layout_daily_forecast"
+            android:layout_marginVertical="@dimen/_16sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_five_days_forecast"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginVertical="@dimen/_16sdp"
+
+            app:layout_constraintTop_toBottomOf="@+id/layout_daily_forecast"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_sunrise"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_151sdp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                app:cardCornerRadius="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.4">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_gradient_background"
+                    android:padding="@dimen/_6sdp">
+
+                    <TextView
+                        android:id="@+id/tv_sunrise"
+                        style="@style/bodySmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:text="@string/SUNRISE"
+                        android:textColor="@color/white"
+                        app:drawableLeftCompat="@drawable/sun_rise_set_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_sunrise_time"
+                        style="@style/bodyLarge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:text="7:25AM"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sunrise" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_sunset"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_151sdp"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/_16sdp"
+                app:cardCornerRadius="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.4">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_gradient_background"
+                    android:padding="@dimen/_6sdp">
+
+                    <TextView
+                        android:id="@+id/tv_sunset"
+                        style="@style/bodySmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:text="@string/SUNRISE"
+                        android:textColor="@color/white"
+                        app:drawableLeftCompat="@drawable/sun_rise_set_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_sunset_time"
+                        style="@style/bodyLarge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:text="7:25AM"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sunset" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--        <include-->
+            <!--            android:id="@+id/layout_sunset"-->
+            <!--            layout="@layout/layout_sunset_sunrise"-->
+            <!--            app:layout_constraintWidth_percent="0.1"-->
+
+            <!--            />-->
+
+            <!--        <include-->
+            <!--            android:id="@+id/layout_sunrise"-->
+            <!--            layout="@layout/layout_sunset_sunrise"-->
+            <!--            />-->
+
+        </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/drawable_gradient_background"
         android:fitsSystemWindows="true"
-        tools:context=".Presentation.home.view.HomeActivity">
+        tools:context=".presentation.home.view.HomeActivity">
 
 
         <ImageView

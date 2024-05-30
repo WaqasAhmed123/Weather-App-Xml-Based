@@ -1,4 +1,4 @@
-package com.example.weather_xml.Presentation.detailForecast.viewModel
+package com.example.weather_xml.presentation.detailForecast.viewModel
 
 import androidx.lifecycle.ViewModel
 

@@ -13,13 +13,13 @@
         android:theme="@style/Theme.Weather_XML"
         tools:targetApi="31">
         <activity
-            android:name=".Presentation.detailForecast.view.DetailForecastActivity"
+            android:name=".presentation.detailForecast.view.DetailForecastActivity"
             android:exported="false" />
         <activity
-            android:name=".Presentation.home.view.HomeActivity"
+            android:name=".presentation.home.view.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".Presentation.splash.SplashActivity"
+            android:name=".presentation.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Weather_XML">
             <intent-filter>

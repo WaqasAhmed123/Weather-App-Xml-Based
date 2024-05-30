@@ -12,4 +12,6 @@
     <string name="FEELS_LIKE">Feels Like</string>
     <string name="SEE_MORE">See More …</string>
     <string name="FIVE_DAYS_FORECASTS">5-Days Forecasts</string>
+    <string name="SUNRISE">SUNRISE</string>
+    <string name="SUNSET">SUNSET</string>
 </resources>
