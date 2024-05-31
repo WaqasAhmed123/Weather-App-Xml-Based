@@ -1,18 +1,23 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+//    id("kapt")
+
 }
+// Apply external script
+apply(from = "$rootDir/config/version.gradle.kts")
 
 android {
     namespace = "com.example.weather_xml"
-    compileSdk = 34
+    compileSdk = extra["newCompileSdk"] as Int
 
     defaultConfig {
         applicationId = "com.example.weather_xml"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = extra["newMinSdk"] as Int
+        targetSdk = extra["newTargetSdk"] as Int
+        versionCode = extra["verCode"] as Int
+        versionName = extra["verName"] as String
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,8 +35,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = extra["compileVersion"] as JavaVersion
+        targetCompatibility = extra["compileVersion"] as JavaVersion
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -50,7 +55,7 @@ android {
         }
     }
 }
-
+val extraProperties = extra
 dependencies {
 
     implementation("androidx.core:core-ktx:1.13.1")
@@ -73,6 +78,16 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     //resp scrn size
-    implementation ("com.intuit.ssp:ssp-android:1.0.6")
-    implementation ("com.intuit.sdp:sdp-android:1.0.6")
+    implementation ("com.intuit.ssp:ssp-android:${extraProperties["ssp"] as String}")
+    implementation ("com.intuit.sdp:sdp-android:${extraProperties["sdp"] as String}")
+
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:${extraProperties["retrofit_version"] as String}")
+    implementation("com.squareup.retrofit2:converter-gson:${extraProperties["gson_version"] as String}")
+
+    //kapt
+//    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
+
+//    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+
 }

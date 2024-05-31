@@ -36,17 +36,30 @@
 
         </TextView>
 
-        <include
-            android:id="@+id/layout_daily_forecast"
-            layout="@layout/layout_daily_forecast"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_daily_forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_16sdp"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_five_days_forecast"
+            app:layout_constraintTop_toBottomOf="@+id/tv_five_days_forecast">
 
-            />
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+<!--        <include-->
+<!--            android:id="@+id/layout_daily_forecast"-->
+<!--            layout="@layout/layout_daily_forecast"-->
+<!--            android:layout_marginVertical="@dimen/_16sdp"-->
+<!--            android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_five_days_forecast"-->
+
+<!--            />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginVertical="@dimen/_16sdp"
 
-            app:layout_constraintTop_toBottomOf="@+id/layout_daily_forecast"
+            app:layout_constraintTop_toBottomOf="@+id/rv_daily_forecast"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
