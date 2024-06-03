@@ -1,9 +1,8 @@
 package com.example.weather_xml.data.networkService.retrofit
 
+import com.example.weather_xml.data.networkService.NetworkAPIUrls
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-//import retrofit2.Retrofit
 
 object RetrofitRestClient {
 
@@ -11,8 +10,7 @@ object RetrofitRestClient {
 
     fun getRetrofit(): Retrofit {
         if (retrofit == null) {
-            retrofit = Retrofit.Builder().baseUrl(BASE_URL)
-//                .baseUrl("https://apim-prod.visitabudhabi.ae/")
+            retrofit = Retrofit.Builder().baseUrl(NetworkAPIUrls.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
