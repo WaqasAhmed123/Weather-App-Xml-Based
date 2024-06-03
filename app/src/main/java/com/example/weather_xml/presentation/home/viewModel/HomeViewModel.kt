@@ -46,6 +46,7 @@ class HomeViewModel(private val homeUseCase: HomeUseCase) :BaseViewModel(),
     override fun onSuccess(result: JsonObject?) {
         _dataModel.value = result!!
 //        callWeatherAndCityInfoAPi()
+        Log.d("dataModel is","${dataModel.value}")
         _showProgress.value = false
     }
 
