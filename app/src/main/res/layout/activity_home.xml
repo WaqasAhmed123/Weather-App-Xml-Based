@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.weather_xml.presentation.home.viewModel.HomeViewModel" />
 
     </data>
 
@@ -12,14 +15,13 @@
         android:layout_height="match_parent"
         android:background="@drawable/drawable_gradient_background"
         android:fitsSystemWindows="true"
-        tools:context=".presentation.home.view.HomeActivity">
+        tools:context=".presentation.home.activities.HomeActivity">
 
 
         <ImageView
             android:id="@+id/iv_weather"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/weather_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.2"
             app:layout_constraintHorizontal_bias="0.0"
@@ -32,7 +34,7 @@
             style="@style/titleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="19°"
+            android:text="@{viewModel.currentTemp}"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,11 +43,11 @@
         </TextView>
 
         <TextView
-            android:id="@+id/tv_precipitation"
+            android:id="@+id/tv_description"
             style="@style/titleMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/PRECEPITATIONS"
+            android:text="@{viewModel.description}"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,11 +60,11 @@
             style="@style/titleMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/MAX"
+            android:text="@{viewModel.tempMinMax}"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_precipitation">
+            app:layout_constraintTop_toBottomOf="@+id/tv_description">
 
         </TextView>
 
@@ -114,7 +116,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/TODAY"
+                        android:text="@{viewModel.formattedDate}"
                         android:textColor="@color/white" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -145,7 +147,7 @@
                     style="@style/titleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/FEELS_LIKE"
+                    android:text="@{viewModel.feelsLike}"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

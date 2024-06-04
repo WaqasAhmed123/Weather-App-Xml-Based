@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:background="@drawable/drawable_gradient_background"
-        tools:context=".presentation.detailForecast.view.DetailForecastActivity">
+        tools:context=".presentation.detailForecast.activities.DetailForecastActivity">
 
         <TextView
             android:id="@+id/tv_location"
@@ -41,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_16sdp"
-            android:layout_marginHorizontal="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_five_days_forecast">
 
@@ -144,7 +143,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/_5sdp"
-                        android:text="@string/SUNRISE"
+                        android:text="@string/SUNSET"
                         android:textColor="@color/white"
                         app:drawableLeftCompat="@drawable/sun_rise_set_icon"
                         app:layout_constraintEnd_toEndOf="parent"

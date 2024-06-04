@@ -85,6 +85,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:${extraProperties["retrofit_version"] as String}")
     implementation("com.squareup.retrofit2:converter-gson:${extraProperties["gson_version"] as String}")
 
+    //glide to load remote image
+    implementation ("com.github.bumptech.glide:glide:${extraProperties["glide"] as String}")
+
     //kapt
 //    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
 
