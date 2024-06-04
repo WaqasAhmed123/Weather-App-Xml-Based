@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.weather_xml.R
-import com.example.weather_xml.data.repositories.WeatherRepository
+import com.example.weather_xml.data.repsitories.WeatherRepository
 import com.example.weather_xml.databinding.ActivityHomeBinding
 import com.example.weather_xml.domain.factory.HomeViewModelFactory
 import com.example.weather_xml.domain.useCase.HomeUseCase
@@ -35,6 +35,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         homeViewModel.callWeatherAndCityInfoAPi()
+
+
 
     }
 
