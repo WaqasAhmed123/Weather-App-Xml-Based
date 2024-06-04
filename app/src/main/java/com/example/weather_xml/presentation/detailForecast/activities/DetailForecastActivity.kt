@@ -56,7 +56,6 @@ class DetailForecastActivity : AppCompatActivity() {
                 data.add(temperature)
                 data.add(day)
                 data.add(time)
-//            data.add(day)
 
                 // Add the data list to dayWiseTemp
                 dayWiseTemp.add(data)
