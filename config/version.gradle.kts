@@ -23,4 +23,5 @@ extra.apply {
     set("retrofit_version", "2.11.0")
     set("gson_version", "2.11.0")
     set("glide", "4.12.0")
+    set("shimmer" ,"0.5.0")
 }

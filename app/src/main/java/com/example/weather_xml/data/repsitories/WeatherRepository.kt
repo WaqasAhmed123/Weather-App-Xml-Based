@@ -77,11 +77,11 @@ class WeatherRepository : BaseRepository<WeatherAndCityInfo>() {
     }
 
     override fun onResponseFailure(throwable: Throwable) {
-        if (throwable is java.lang.Exception) {
+//        if (throwable is java.lang.Exception) {
             callback!!.onNetworkError()
-        } else {
-            callback!!.onFailure(throwable.message)
-        }
+//        } else {
+//            callback!!.onFailure(throwable.message)
+//        }
         // Handle the failure here
         println("Error: ${throwable.message}")
         // Update ViewModel or LiveData with the error

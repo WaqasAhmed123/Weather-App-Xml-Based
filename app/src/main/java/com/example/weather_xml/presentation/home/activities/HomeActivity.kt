@@ -3,6 +3,7 @@ package com.example.weather_xml.presentation.home.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -34,10 +35,8 @@ class HomeActivity : AppCompatActivity() {
         setContentView(dataBinding.root)
 
         dataBinding.tvSeeMore.setOnClickListener {
-//            val temptInt
             val intent = Intent(this@HomeActivity, DetailForecastActivity::class.java)
             intent.putExtra("weatherAndCityInfo", homeViewModel.dataModel.value)
-//            intent.put
             startActivity(intent)
         }
 
@@ -47,19 +46,41 @@ class HomeActivity : AppCompatActivity() {
         dataBinding.lifecycleOwner = this
 
         homeViewModel.weatherDescriptionIconUrl.observe(this, Observer {
-//            dataBinding.ivWeather =
             Glide.with(applicationContext).load(it).into(dataBinding.ivWeather)
 
         })
 
-//        homeViewModel.
-//        Glide.with(holder.itemView.context).load(categoriesList[position].strCategoryThumb).into(holder.binding.imgCategory)
-//        holder.binding.tvCategoryName.text=categoriesList[position].strCategory
-//        holder.itemView.setOnClickListener{
-//            onItemClick.invoke(categoriesList[position])
-//
-//        }
+        homeViewModel.showProgress.observe(this, Observer {
+            if (it) {
+                dataBinding.homeMainLayout.visibility = View.INVISIBLE
+                dataBinding.skeletonHomeLayout.root.visibility = View.VISIBLE
 
+            }
+            if (!it) {
+                dataBinding.skeletonHomeLayout.root.visibility = View.INVISIBLE
+                dataBinding.homeMainLayout.visibility = View.VISIBLE
+
+            }
+        })
+
+        homeViewModel.showNetworkError.observe(this, Observer {
+            if (it) {
+                dataBinding.homeMainLayout.visibility = View.INVISIBLE
+                dataBinding.skeletonHomeLayout.root.visibility = View.INVISIBLE
+                dataBinding.layoutNodataFound.root.visibility = View.VISIBLE
+
+            }
+            if (!it) {
+                dataBinding.layoutNodataFound.root.visibility = View.INVISIBLE
+                dataBinding.skeletonHomeLayout.root.visibility = View.INVISIBLE
+                dataBinding.homeMainLayout.visibility = View.VISIBLE
+
+            }
+        })
+
+        dataBinding.layoutNodataFound.btnTryAgain.setOnClickListener {
+            homeViewModel.callWeatherAndCityInfoAPi()
+        }
 
     }
 

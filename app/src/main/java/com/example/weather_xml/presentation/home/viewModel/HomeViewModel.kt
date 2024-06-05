@@ -41,10 +41,6 @@ class HomeViewModel(private val homeUseCase: HomeUseCase) : BaseViewModel() {
     private var _weatherDescriptionIconUrl: MutableLiveData<String?> = MutableLiveData(null)
     val weatherDescriptionIconUrl: LiveData<String?>
         get() = _weatherDescriptionIconUrl
-    var cityName: MutableLiveData<String?> = MutableLiveData(null)
-    var country: MutableLiveData<String?> = MutableLiveData(null)
-    var sunriseTime: MutableLiveData<String?> = MutableLiveData(null)
-    var sunsetTime: MutableLiveData<String?> = MutableLiveData(null)
 
     fun callWeatherAndCityInfoAPi() {
         _showProgress.value = true
@@ -52,7 +48,7 @@ class HomeViewModel(private val homeUseCase: HomeUseCase) : BaseViewModel() {
         homeUseCase.callWeatherAndCityInfoApi(
             lat = 24.932342,
             lon = 67.097506,
-            object : ResponseCallback<WeatherAndCityInfo> {
+            callback = object  : ResponseCallback<WeatherAndCityInfo> {
                 override fun onSuccess(result: WeatherAndCityInfo?) {
                     _dataModel.value = result!!
                     _currentTemp.value =
@@ -72,13 +68,17 @@ class HomeViewModel(private val homeUseCase: HomeUseCase) : BaseViewModel() {
                 }
 
                 override fun onNetworkError() {
+                    this@HomeViewModel.onNetworkError()
                     Log.d("weatherApi", "Network Error")
-                    _showProgress.value = false
+//                    _showProgress.value = false
+//                    _showNetworkError.value = true
+
                 }
 
                 override fun onFailure(message: String?) {
-                    Log.d("weatherApi", "Network Error")
-                    _showProgress.value = false
+                    this@HomeViewModel.onFailure(message)
+                    Log.d("weatherApi", "Network Failure Error")
+//                    _showProgress.value = false
                 }
 
             }

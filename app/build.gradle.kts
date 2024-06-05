@@ -88,6 +88,9 @@ dependencies {
     //glide to load remote image
     implementation ("com.github.bumptech.glide:glide:${extraProperties["glide"] as String}")
 
+    //shimmer
+    implementation ("com.facebook.shimmer:shimmer:${extraProperties["shimmer"] as String}")
+
     //kapt
 //    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
 
