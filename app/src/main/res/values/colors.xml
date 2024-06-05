@@ -12,5 +12,10 @@
     <color name="colorPrimary">#3E2D8F</color>
     <color name="colorPrimaryDark">#3E2D8F</color>
     <color name="colorAccent">#9D52AC</color>
+<!--    <color name="shimmerPlaceholder">#d6d8da</color>-->
+    <color name="colorBgNoDataDrawable">#EEEFEF</color>
+    <color name="colorGrey">#97A1A7</color>
+
+
 
 </resources>

@@ -17,5 +17,7 @@
     <string name="SOMETHING_WENT_WRONG">Oho! looks like something went wrong</string>
     <string name="NO_DATA_FOUND_MESSAGE">Unable to serve you at the moment</string>
     <string name="TRY_AGAIN">Try Again</string>
+    <string name="ENGLISH">English</string>
+    <string name="URDU">Urdu</string>
 
 </resources>

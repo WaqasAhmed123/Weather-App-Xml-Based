@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="GET_START">شروع کریں</string>
+    <string name="WEATHER">موسم</string>
+    <string name="FORECASTS">پیشین گوئیاں</string>
+    <string name="PRECEPITATIONS">بارشیں</string>
+    <string name="MAX">زیادہ سے زیادہ</string>
+    <string name="MIN">کم از کم</string>
+    <string name="TODAY">آج</string>
+    <string name="FEELS_LIKE">کی طرح لگتا ہے</string>
+    <string name="SEE_MORE"> دیکھیں مزید … </string>
+    <string name="FIVE_DAYS_FORECASTS">5 دن کی پیشین گوئیاں</string>
+    <string name="SUNRISE">طلوع آفتاب</string>
+    <string name="SUNSET">غروب آفتاب</string>
+    <string name="SOMETHING_WENT_WRONG">اوہو! ایسا لگتا ہے کہ کچھ غلط ہو گیا ہے۔</string>
+    <string name="NO_DATA_FOUND_MESSAGE">اس وقت آپ کی خدمت کرنے سے قاصر ہوں۔</string>
+    <string name="TRY_AGAIN">دوبارہ کوشش کریں</string>
+    <string name="ENGLISH">انگلش</string>
+    <string name="URDU">اردو</string>
+</resources>

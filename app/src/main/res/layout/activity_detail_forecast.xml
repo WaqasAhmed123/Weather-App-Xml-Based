@@ -10,18 +10,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:background="@drawable/drawable_gradient_background"
+        android:fitsSystemWindows="true"
         tools:context=".presentation.detailForecast.activities.DetailForecastActivity">
 
         <TextView
             android:id="@+id/tv_location"
+            style="@style/titleMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="City"
-            style="@style/titleMedium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"></TextView>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></TextView>
 
         <TextView
             android:id="@+id/tv_five_days_forecast"
@@ -46,36 +46,22 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-
-
-<!--        <include-->
-<!--            android:id="@+id/layout_daily_forecast"-->
-<!--            layout="@layout/layout_daily_forecast"-->
-<!--            android:layout_marginVertical="@dimen/_16sdp"-->
-<!--            android:layout_marginHorizontal="@dimen/_16sdp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tv_five_days_forecast"-->
-
-<!--            />-->
-
         <LinearLayout
+            android:id="@+id/ll_sunrise_sunset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginVertical="@dimen/_16sdp"
-
-            app:layout_constraintTop_toBottomOf="@+id/rv_daily_forecast"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_daily_forecast">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_sunrise"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_151sdp"
-                android:layout_weight="1"
                 android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_weight="1"
                 app:cardCornerRadius="@dimen/_20sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -123,8 +109,8 @@
                 android:id="@+id/cv_sunset"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_151sdp"
-                android:layout_weight="1"
                 android:layout_marginRight="@dimen/_16sdp"
+                android:layout_weight="1"
                 app:cardCornerRadius="@dimen/_20sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -168,20 +154,51 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!--        <include-->
-            <!--            android:id="@+id/layout_sunset"-->
-            <!--            layout="@layout/layout_sunset_sunrise"-->
-            <!--            app:layout_constraintWidth_percent="0.1"-->
-
-            <!--            />-->
-
-            <!--        <include-->
-            <!--            android:id="@+id/layout_sunrise"-->
-            <!--            layout="@layout/layout_sunset_sunrise"-->
-            <!--            />-->
-
         </LinearLayout>
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/drawable_gradient_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_sunrise_sunset" />
+
+        <LinearLayout
+            android:id="@+id/ll_lang_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider">
+
+            <TextView
+                android:id="@+id/txt_title_language"
+                style="@style/titleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="@string/ENGLISH"
+                android:textDirection="locale"
+                android:textStyle="bold" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:switchMinWidth="0dp"
+                android:thumb="@drawable/drawable_switch_thumb"
+                android:track="@drawable/drawable_switch_track"
+                app:showText="false"
+                app:switchMinWidth="@dimen/_48sdp" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
