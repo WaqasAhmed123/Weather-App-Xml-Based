@@ -1,5 +1,6 @@
 package com.example.weather_xml.presentation.detailForecast.activities
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.example.weather_xml.corePlatform.utilities.AppUtil.extractTimeAndDay
 import com.example.weather_xml.databinding.ActivityDetailForecastBinding
 import com.example.weather_xml.domain.model.WeatherAndCityInfo
 import com.example.weather_xml.presentation.detailForecast.adapter.DailyForecastAdapter
+import java.util.Locale
 
 class DetailForecastActivity : AppCompatActivity() {
 
@@ -24,6 +26,9 @@ class DetailForecastActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         dataBinding = DataBindingUtil.inflate(
             LayoutInflater.from(this), R.layout.activity_detail_forecast, null, false
         )
@@ -69,9 +74,36 @@ class DetailForecastActivity : AppCompatActivity() {
             )
             adapter = dailyForecastAdapter
         }
-        Log.d("day&TempList", "${dayWiseTemp}")
 
+         fun restartActivity() {
+            val intent = Intent(this, DetailForecastActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
+//        dataBinding.switchLanguage.setOnCheckedChangeListener { _, isChecked ->
+//            val languageCode = if (isChecked) "en" else "ur"
+//            setLocale(languageCode)
+//            restartActivity()
+//        }
     }
+
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+//    val config = resources.configuration
+//    val lang = "ur" // your language code
+//    val locale = Locale(lang)
+//    Locale.setDefault(locale)
+//    config.setLocale(locale)
+//
+//    createConfigurationContext(config)
+//    resources.updateConfiguration(config, resources.displayMetrics)
+
 
 }

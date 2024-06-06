@@ -5,8 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.example.weather_xml.corePlatform.globals.callbacks.ResponseCallback
 import com.example.weather_xml.corePlatform.globals.common.base.BaseViewModel
 import com.example.weather_xml.domain.model.WeatherAndCityInfo
+import java.util.Locale
 
 class DetailForecastViewModel:BaseViewModel() {
+
+
 
 //    object weatherAndCityInfo : ResponseCallback<WeatherAndCityInfo> {
 //        override fun onNetworkError() {
