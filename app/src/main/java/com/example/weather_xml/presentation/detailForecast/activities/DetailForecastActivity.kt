@@ -7,16 +7,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weather_xml.R
 import com.example.weather_xml.corePlatform.globals.common.base.BaseActivity
 import com.example.weather_xml.corePlatform.utilities.AppUtil
 import com.example.weather_xml.corePlatform.utilities.AppUtil.extractTimeAndDay
+import com.example.weather_xml.corePlatform.utilities.PreferencesUtil
 import com.example.weather_xml.databinding.ActivityDetailForecastBinding
 import com.example.weather_xml.domain.model.WeatherAndCityInfo
 import com.example.weather_xml.presentation.detailForecast.adapter.DailyForecastAdapter
+import com.example.weather_xml.presentation.detailForecast.viewModel.DetailForecastViewModel
 import com.example.weather_xml.presentation.splash.SplashActivity
 import com.example.weather_xml.resources.localization.LocaleHelper
 import com.example.weather_xml.resources.localization.LocaleHelper.setLocale
@@ -24,9 +31,12 @@ import java.util.Locale
 
 class DetailForecastActivity : BaseActivity() {
 
-    private lateinit var dataBinding: ActivityDetailForecastBinding
+    private  var dataBinding: ActivityDetailForecastBinding?= null
     val dayWiseTemp: MutableList<MutableList<Any>> = mutableListOf()
     private lateinit var dailyForecastAdapter: DailyForecastAdapter
+
+    // Initialize the ViewModel
+    private val viewModel: DetailForecastViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,16 +47,16 @@ class DetailForecastActivity : BaseActivity() {
         dataBinding = DataBindingUtil.inflate(
             LayoutInflater.from(this), R.layout.activity_detail_forecast, null, false
         )
-        setContentView(dataBinding.root)
+        setContentView(dataBinding!!.root)
 
 
         val weatherAndCityInfo =
             intent.getSerializableExtra("weatherAndCityInfo") as WeatherAndCityInfo
 
-        dataBinding.tvLocation.text = weatherAndCityInfo.city!!.name
-        dataBinding.tvSunriseTime.text =
+        dataBinding!!.tvLocation.text = weatherAndCityInfo.city!!.name
+        dataBinding!!.tvSunriseTime.text =
             AppUtil.unixTimestampTo12HourFormat(weatherAndCityInfo.city.sunrise!!.toLong())
-        dataBinding.tvSunsetTime.text =
+        dataBinding!!.tvSunsetTime.text =
             AppUtil.unixTimestampTo12HourFormat(weatherAndCityInfo.city.sunset!!.toLong())
 
 
@@ -73,21 +83,30 @@ class DetailForecastActivity : BaseActivity() {
 
         }
         dailyForecastAdapter = DailyForecastAdapter(dayWiseTemp = dayWiseTemp)
-        dataBinding.rvDailyForecast.apply {
+        dataBinding!!.rvDailyForecast.apply {
+            Log.d("recyclerViewVisible","${dataBinding!!.rvDailyForecast.isVisible}")
             layoutManager = LinearLayoutManager(
                 this@DetailForecastActivity, LinearLayoutManager.HORIZONTAL, false
             )
             adapter = dailyForecastAdapter
         }
 
+        // Observe the switch state from the ViewModel
+        viewModel.isSwitchEnabled.observe(this, Observer { isSwitchEnabled ->
+            isSwitchEnabled?.let {
+                dataBinding!!.switchLanguage.isChecked = it
+            }
+        })
 
 
-        dataBinding.switchLanguage.setOnCheckedChangeListener { _, isChecked ->
-            val languageCode = if (isChecked) "en" else "ur"
+
+        dataBinding!!.switchLanguage.setOnClickListener {
+            Log.d("lang changeSwitch", "${LocaleHelper.getLanguage()}")
+            val languageCode = if (dataBinding!!.switchLanguage.isChecked) "en" else "ur"
             LocaleHelper.setLocale(
-                this,
-                languageCode
+                this, languageCode
             )
+//            viewModel.updateSwitchState(languageCode)
             restartActivity()
         }
     }
@@ -98,6 +117,11 @@ class DetailForecastActivity : BaseActivity() {
         intent.flags = FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dataBinding = null
     }
 
 }

@@ -27,13 +27,16 @@ object LocaleHelper {
 //            if (SupportedLanguages.isSupported(language)) {
 //                setLocaleForFreshInstall(context, language)
 //            } else {
-                setLocale(
-                    context,
-                    defaultLanguageCode()
-                )
+            setLocale(
+                context, defaultLanguageCode()
+            )
 //            }
         }
 
+    }
+
+    fun getLanguage(): String {
+        return getPersistedData(defaultLanguageCode())
     }
 
     fun setLocale(context: Context, language: String): Context {
@@ -44,7 +47,7 @@ object LocaleHelper {
 //            localeLanguage = languageList[0]
 //        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return  updateResources(context, localeLanguage)
+            return updateResources(context, localeLanguage)
         }
         return updateResourcesLegacy(context, language)
     }
@@ -69,8 +72,7 @@ object LocaleHelper {
         var deviceLanguageCode: String = Locale.getDefault().language
         if (deviceLanguageCode.isNotEmpty()) {
             if (deviceLanguageCode.contains(
-                    LANGUAGE_URDU_LOCALE_CODE,
-                    true
+                    LANGUAGE_URDU_LOCALE_CODE, true
                 )
             //                || deviceLanguageCode.contains(
 //                    LANGUAGE_HEBREW_LOCALE_CODE2,
@@ -118,15 +120,13 @@ object LocaleHelper {
 
     private fun persist(language: String) {
         PreferencesUtil.setStringPreference(
-            SELECTED_LANGUAGE,
-            language
+            SELECTED_LANGUAGE, language
         )
     }
 
     private fun getPersistedData(defaultLanguage: String): String {
         return PreferencesUtil.getStringPreference(
-            SELECTED_LANGUAGE,
-            defaultLanguage
+            SELECTED_LANGUAGE, defaultLanguage
         )
     }
 
@@ -141,7 +141,7 @@ object LocaleHelper {
             config.setLocale(locale)
             context = context.createConfigurationContext(config)
         } catch (ex: Exception) {
-            Log.d("lang change","$ex")
+            Log.d("lang change", "$ex")
 
             //VADLog.error(ex)
         }
@@ -150,7 +150,7 @@ object LocaleHelper {
 
     fun onAttach(@NonNull context: Context): Context {
         val lang = getPersistedData(defaultLanguageCode())
-        Log.d("lang changeOnAtt","$lang")
+        Log.d("lang changeOnAtt", "$lang")
 
         return setLocale(context, lang)
     }

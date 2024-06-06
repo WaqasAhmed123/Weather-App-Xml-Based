@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:text="City"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></TextView>
+            app:layout_constraintStart_toStartOf="parent">
+
+        </TextView>
 
         <TextView
             android:id="@+id/tv_five_days_forecast"
@@ -191,9 +193,41 @@
                 android:id="@+id/switch_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:switchMinWidth="0dp"
                 android:thumb="@drawable/drawable_switch_thumb"
+                android:track="@drawable/drawable_switch_track"
+                app:showText="false"
+                app:switchMinWidth="@dimen/_48sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_theme_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_lang_switch">
+
+            <TextView
+                android:id="@+id/txt_theme"
+                style="@style/titleSmall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="@string/ENGLISH"
+                android:textDirection="locale"
+                android:textStyle="bold" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="0dp"
+                android:thumb="@drawable/thumb_theme_switch"
                 android:track="@drawable/drawable_switch_track"
                 app:showText="false"
                 app:switchMinWidth="@dimen/_48sdp" />
