@@ -1,6 +1,7 @@
 package com.example.weather_xml.presentation.detailForecast.activities
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,14 +11,18 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weather_xml.R
+import com.example.weather_xml.corePlatform.globals.common.base.BaseActivity
 import com.example.weather_xml.corePlatform.utilities.AppUtil
 import com.example.weather_xml.corePlatform.utilities.AppUtil.extractTimeAndDay
 import com.example.weather_xml.databinding.ActivityDetailForecastBinding
 import com.example.weather_xml.domain.model.WeatherAndCityInfo
 import com.example.weather_xml.presentation.detailForecast.adapter.DailyForecastAdapter
+import com.example.weather_xml.presentation.splash.SplashActivity
+import com.example.weather_xml.resources.localization.LocaleHelper
+import com.example.weather_xml.resources.localization.LocaleHelper.setLocale
 import java.util.Locale
 
-class DetailForecastActivity : AppCompatActivity() {
+class DetailForecastActivity : BaseActivity() {
 
     private lateinit var dataBinding: ActivityDetailForecastBinding
     val dayWiseTemp: MutableList<MutableList<Any>> = mutableListOf()
@@ -75,35 +80,24 @@ class DetailForecastActivity : AppCompatActivity() {
             adapter = dailyForecastAdapter
         }
 
-         fun restartActivity() {
-            val intent = Intent(this, DetailForecastActivity::class.java)
-            startActivity(intent)
-            finish()
+
+
+        dataBinding.switchLanguage.setOnCheckedChangeListener { _, isChecked ->
+            val languageCode = if (isChecked) "en" else "ur"
+            LocaleHelper.setLocale(
+                this,
+                languageCode
+            )
+            restartActivity()
         }
-
-//        dataBinding.switchLanguage.setOnCheckedChangeListener { _, isChecked ->
-//            val languageCode = if (isChecked) "en" else "ur"
-//            setLocale(languageCode)
-//            restartActivity()
-//        }
     }
 
-    private fun setLocale(languageCode: String) {
-        val locale = Locale(languageCode)
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        config.setLayoutDirection(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-    }
-//    val config = resources.configuration
-//    val lang = "ur" // your language code
-//    val locale = Locale(lang)
-//    Locale.setDefault(locale)
-//    config.setLocale(locale)
-//
-//    createConfigurationContext(config)
-//    resources.updateConfiguration(config, resources.displayMetrics)
 
+    fun restartActivity() {
+        val intent = Intent(this, SplashActivity::class.java)
+        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
+    }
 
 }

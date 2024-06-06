@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.weather_xml.R
+import com.example.weather_xml.corePlatform.globals.common.base.BaseActivity
 import com.example.weather_xml.data.repsitories.WeatherRepository
 import com.example.weather_xml.databinding.ActivityHomeBinding
 import com.example.weather_xml.domain.factory.HomeViewModelFactory
@@ -18,7 +19,7 @@ import com.example.weather_xml.presentation.detailForecast.activities.DetailFore
 import com.example.weather_xml.presentation.home.viewModel.HomeViewModel
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     lateinit var dataBinding: ActivityHomeBinding
 
     private val homeViewModel by viewModels<HomeViewModel> {
