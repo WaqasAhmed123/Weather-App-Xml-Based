@@ -19,5 +19,6 @@
     <string name="TRY_AGAIN">Try Again</string>
     <string name="ENGLISH">English</string>
     <string name="URDU">Urdu</string>
+    <string name="THEME">Theme</string>
 
 </resources>

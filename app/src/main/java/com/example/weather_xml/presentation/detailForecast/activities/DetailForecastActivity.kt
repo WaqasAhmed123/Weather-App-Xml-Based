@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
@@ -17,6 +19,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weather_xml.R
 import com.example.weather_xml.corePlatform.globals.common.base.BaseActivity
+import com.example.weather_xml.corePlatform.globals.constant.AppConstants
 import com.example.weather_xml.corePlatform.utilities.AppUtil
 import com.example.weather_xml.corePlatform.utilities.AppUtil.extractTimeAndDay
 import com.example.weather_xml.corePlatform.utilities.PreferencesUtil
@@ -31,7 +34,7 @@ import java.util.Locale
 
 class DetailForecastActivity : BaseActivity() {
 
-    private  var dataBinding: ActivityDetailForecastBinding?= null
+    private var dataBinding: ActivityDetailForecastBinding? = null
     val dayWiseTemp: MutableList<MutableList<Any>> = mutableListOf()
     private lateinit var dailyForecastAdapter: DailyForecastAdapter
 
@@ -84,30 +87,70 @@ class DetailForecastActivity : BaseActivity() {
         }
         dailyForecastAdapter = DailyForecastAdapter(dayWiseTemp = dayWiseTemp)
         dataBinding!!.rvDailyForecast.apply {
-            Log.d("recyclerViewVisible","${dataBinding!!.rvDailyForecast.isVisible}")
+            Log.d("recyclerViewVisible", "${dataBinding!!.rvDailyForecast.isVisible}")
             layoutManager = LinearLayoutManager(
                 this@DetailForecastActivity, LinearLayoutManager.HORIZONTAL, false
             )
             adapter = dailyForecastAdapter
         }
 
-        // Observe the switch state from the ViewModel
-        viewModel.isSwitchEnabled.observe(this, Observer { isSwitchEnabled ->
+        // Observe the switch state of lang from the ViewModel
+        viewModel.isLangSwitchEnabled.observe(this, Observer { isSwitchEnabled ->
             isSwitchEnabled?.let {
                 dataBinding!!.switchLanguage.isChecked = it
             }
         })
 
+        //Observe the switch state of theme from the ViewModel
+        viewModel.isThemeSwitchEnabled.observe(this, Observer { isSwitchEnabled ->
+            Log.d("theme changeSwitchLD", "$isSwitchEnabled")
+            Log.d(
+                "theme changeSwitchLD",
+                "${PreferencesUtil.getIntegerPreference(AppConstants.SYSTEM_THEME, 1)}"
+            )
+            isSwitchEnabled?.let {
+                dataBinding!!.switchTheme.isChecked = it
+            }
+        })
 
 
         dataBinding!!.switchLanguage.setOnClickListener {
-            Log.d("lang changeSwitch", "${LocaleHelper.getLanguage()}")
             val languageCode = if (dataBinding!!.switchLanguage.isChecked) "en" else "ur"
             LocaleHelper.setLocale(
                 this, languageCode
             )
-//            viewModel.updateSwitchState(languageCode)
             restartActivity()
+        }
+
+        dataBinding!!.switchTheme.setOnClickListener {
+            if (dataBinding!!.switchTheme.isChecked) {
+                PreferencesUtil.setIntegerPreference(
+                    AppConstants.SYSTEM_THEME, 2
+                )
+                AppCompatDelegate.setDefaultNightMode(
+                    AppCompatDelegate.MODE_NIGHT_YES
+                )
+            } else {
+                PreferencesUtil.setIntegerPreference(
+                    AppConstants.SYSTEM_THEME, 0
+                )
+                AppCompatDelegate.setDefaultNightMode(
+                    AppCompatDelegate.MODE_NIGHT_NO
+                )
+
+            }
+//            restartActivity()
+            Log.d(
+                "theme changeSwitch",
+                "${PreferencesUtil.getIntegerPreference(AppConstants.SYSTEM_THEME, 1)}"
+            )
+
+
+//            val languageCode = if (dataBinding!!.switchLanguage.isChecked) "en" else "ur"
+//            LocaleHelper.setLocale(
+//                this, languageCode
+//            )
+//            restartActivity()
         }
     }
 

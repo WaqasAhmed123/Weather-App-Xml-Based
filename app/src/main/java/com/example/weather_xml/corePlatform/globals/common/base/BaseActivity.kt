@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.NonNull
+import com.example.weather_xml.application.GlobalStateApplication
 import com.example.weather_xml.resources.localization.LocaleHelper
 
 abstract class BaseActivity : AppCompatActivity() {

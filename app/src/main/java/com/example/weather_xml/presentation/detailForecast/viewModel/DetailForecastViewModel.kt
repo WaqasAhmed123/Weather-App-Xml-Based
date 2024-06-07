@@ -6,20 +6,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weather_xml.corePlatform.globals.callbacks.ResponseCallback
 import com.example.weather_xml.corePlatform.globals.common.base.BaseViewModel
+import com.example.weather_xml.corePlatform.globals.constant.AppConstants
+import com.example.weather_xml.corePlatform.utilities.PreferencesUtil
 import com.example.weather_xml.domain.model.WeatherAndCityInfo
 import com.example.weather_xml.resources.localization.LocaleHelper
 import java.util.Locale
 
-class DetailForecastViewModel:BaseViewModel() {
+class DetailForecastViewModel : BaseViewModel() {
 
-    private val _isSwitchEnabled: MutableLiveData<Boolean> = MutableLiveData(LocaleHelper.getLanguage() != "ur")
-    val isSwitchEnabled: LiveData<Boolean>
-        get() = _isSwitchEnabled
+    private val _isLangSwitchEnabled: MutableLiveData<Boolean> =
+        MutableLiveData(LocaleHelper.getLanguage() != "ur")
+    private val _isThemeSwitchEnabled: MutableLiveData<Boolean> =
+        MutableLiveData(PreferencesUtil.getIntegerPreference(AppConstants.SYSTEM_THEME, 1) == 2)
+    val isLangSwitchEnabled: LiveData<Boolean>
+        get() = _isLangSwitchEnabled
+    val isThemeSwitchEnabled: LiveData<Boolean>
+        get() = _isThemeSwitchEnabled
 
     fun updateSwitchState(languageCode: String) {
-        _isSwitchEnabled.value = languageCode != "ur"
+        _isLangSwitchEnabled.value = languageCode != "ur"
     }
-
 
 
 }

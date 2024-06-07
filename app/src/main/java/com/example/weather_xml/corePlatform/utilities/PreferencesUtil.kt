@@ -37,6 +37,23 @@ object PreferencesUtil {
         return false
     }
 
+    fun setIntegerPreference(key: String, value: Int): Boolean {
+        if (sSharedPreferences != null) {
+            val editor = sSharedPreferences!!.edit()
+            editor.putInt(key, value)
+            return editor.commit()
+        }
+        return false
+    }
+
+    fun getIntegerPreference(key: String, defaultValue: Int): Int {
+        var value = defaultValue
+        if (sSharedPreferences != null) {
+            value = sSharedPreferences!!.getInt(key, defaultValue)
+        }
+        return value
+    }
+
     fun getBooleanPreference(key: String, defaultValue: Boolean): Boolean {
         var value = defaultValue
         if (sSharedPreferences != null) {

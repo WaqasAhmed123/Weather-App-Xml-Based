@@ -27,6 +27,4 @@ open class BaseViewModel :ViewModel(), BaseError {
         _showProgress.value = false
         _showError.value = true
     }
-
-
 }

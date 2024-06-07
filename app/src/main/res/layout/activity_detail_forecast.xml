@@ -83,7 +83,6 @@
                         android:gravity="center"
                         android:paddingTop="@dimen/_5sdp"
                         android:text="@string/SUNRISE"
-                        android:textColor="@color/white"
                         app:drawableLeftCompat="@drawable/sun_rise_set_icon"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +97,6 @@
                         android:gravity="center"
                         android:paddingBottom="@dimen/_5sdp"
                         android:text="7:25AM"
-                        android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_sunrise" />
@@ -132,7 +130,6 @@
                         android:gravity="center"
                         android:paddingTop="@dimen/_5sdp"
                         android:text="@string/SUNSET"
-                        android:textColor="@color/white"
                         app:drawableLeftCompat="@drawable/sun_rise_set_icon"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +144,6 @@
                         android:gravity="center"
                         android:paddingBottom="@dimen/_5sdp"
                         android:text="7:25AM"
-                        android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_sunset" />
@@ -218,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="@string/ENGLISH"
+                android:text="@string/THEME"
                 android:textDirection="locale"
                 android:textStyle="bold" />
 
